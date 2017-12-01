@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Contacts</title>
+
+<link rel="stylesheet" href="css/qunit-2.4.1.css">
+<link rel="stylesheet" href="css/contact.css">
+<script src="js/qunit-2.4.1.js"></script>
+<script src="js/jquery-2.2.4.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
+
+<script src="src/phone.js"></script>
+<script src="src/mail.js"></script>
+<script src="src/contact.js"></script>
+<script src="src/contacts.js"></script>
+<script src="src/builder.js"></script>
+<script src="src/contactIterator.js"></script>
+<script src="src/storage.js"></script>
+
+<script src="src/view.js"></script>
+<script src="src/model.js"></script>
+<script src="src/controller.js"></script>
+
+
+<script>
+    var build = function (){
+        var model = new Contact.Model();
+        var view = new Contact.View(model);
+        var controller = new Contact.Controller(model,view);
+    };
+
+    var Envoi = function(){
+        var contact = new Contact.Builder().createContactWithProfessionalMail(Contact.Gender.MR, $('#prenom'), $('#nom') ,$('#mail'));
+        Contact.Contacts.instance().add(contact);
+    };
+
+</script>
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription</title>
+</head>
+<body>
+<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Inscription</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="nom">Nom</label>
+            <div class="col-md-4">
+                <input id="nom" name="textinput" type="text" placeholder="" class="form-control input-md">
+                <span class="help-block">Ex : DUPONT</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prenom">Prenom</label>
+            <div class="col-md-4">
+                <input id="prenom" name="textinput" type="text" placeholder="" class="form-control input-md">
+                <span class="help-block">Ex : Jacques</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="mail">Mail</label>
+            <div class="col-md-4">
+                <input id="mail" name="textinput" type="text" placeholder="" class="form-control input-md">
+                <span class="help-block">Ex : jacquesDupont@random.com</span>
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="button1id"></label>
+            <div class="col-md-8">
+                <button id="button1id" name="button1id" class="btn btn-success" onsubmit="javascript:Envoi()">Valider</button>
+                <button id="button2id" name="button2id" class="btn btn-danger">Annuler</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+
+</body>
+</html>
