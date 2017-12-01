@@ -103,7 +103,12 @@
       });
 
       QUnit.test("remove contact tests", function (assert) {
-        assert.ok(false);
+          var line = $('table tbody td a');
+          line[0].click();
+          var first = Contact.Contacts.instance().iterator().next();
+          var tab = $('table tbody td');
+          assert.equal(first.firstName(),tab[0].innerText);
+          assert.equal(first.firstName(),"Jacques");
       });
 
       QUnit.test("sort contact tests", function (assert) {
